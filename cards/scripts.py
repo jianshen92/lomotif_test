@@ -5,7 +5,7 @@ This script is meant to be run once to populate database with cards in Rastakhan
 import requests
 from django.db import transaction
 
-from cards import Cards
+from cards.models import Cards
 
 url = "https://omgvamp-hearthstone-v1.p.mashape.com/cards/sets/Rastakhan%27s%20Rumble"
 headers = {"X-Mashape-Key": "ZTMJtzbYvXmshPTFEZI4ztIy3I68p1nPwgHjsnIGukKZeJxGcs"}
