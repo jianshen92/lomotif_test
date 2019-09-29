@@ -1,0 +1,1 @@
+web: gunicorn lomotif.wsgi --log-file -
