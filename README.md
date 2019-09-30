@@ -89,5 +89,8 @@ Therefore I decided to include a query argument called `collectible`.
 **Using formatters to format the codes**
 
 I made use of some formatters like `black` and `isort` to format my code to adhere to PEP8 conventions.
-We can run `make format` to run them.
+We can execute `make format` to run them.
 
+**Unit Testing with pytest**
+
+I wrote some unit tests for sanity check. Run `make test` for testing.

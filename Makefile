@@ -17,3 +17,7 @@ populate-db:
 
 runserver:
 	python manage.py runserver
+
+
+test : ## run pytest
+	pytest cards/tests.py
