@@ -19,6 +19,6 @@ def create_deck(request, player_class: str):
         Q(collectible=collectible),
     ).values("dbf_id", "name", "player_class")
 
-    deck_list = generate_deck(list(cards))
+    deck_list = generate_deck(cards)
 
     return JsonResponse(deck_list, safe=False)

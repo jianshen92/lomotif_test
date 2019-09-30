@@ -12,7 +12,7 @@ headers = {"X-Mashape-Key": "ZTMJtzbYvXmshPTFEZI4ztIy3I68p1nPwgHjsnIGukKZeJxGcs"
 
 # Send Http Request
 r = requests.get(url, headers=headers)
-assert r.status_code == 200
+r.raise_for_status()
 
 cards = r.json()
 
@@ -20,6 +20,7 @@ assert len(cards) > 0
 
 # Saving cards into database
 with transaction.atomic():
+    card_list = []
     for card in cards:
         # Drop two cards that does not have a class "TRL_390e" and "TRL_085e"
         if "playerClass" in card:
@@ -31,12 +32,16 @@ with transaction.atomic():
             player_class = card["playerClass"]
             collectible = True if "collectible" in card else False
 
-            Cards.objects.create(
-                card_id=card_id,
-                dbf_id=dbf_id,
-                name=name,
-                card_set=card_set,
-                type=card_type,
-                player_class=player_class,
-                collectible=collectible,
+            card_list.append(
+                Cards(
+                    card_id=card_id,
+                    dbf_id=dbf_id,
+                    name=name,
+                    card_set=card_set,
+                    card_type=card_type,
+                    player_class=player_class,
+                    collectible=collectible,
+                )
             )
+
+    Cards.objects.bulk_create(card_list)

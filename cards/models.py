@@ -20,7 +20,7 @@ class Cards(models.Model):
     dbf_id = models.TextField()
     name = models.TextField(help_text="Card's Name")
     card_set = models.TextField(help_text="Card's Expansion Set")
-    type = models.TextField(help_text="Card's Type")
+    card_type = models.TextField(help_text="Card's Type")
     player_class = models.TextField(choices=CardClass.choices)
     collectible = models.BooleanField(
         help_text="Whether the card is collectible. "
