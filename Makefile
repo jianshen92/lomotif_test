@@ -20,4 +20,4 @@ runserver:
 
 
 test : ## run pytest
-	pytest cards/tests.py
+	pytest tests/
